@@ -16,7 +16,8 @@ def index():
 def handle_input(data):
     global game
     input_data = data['data']
-    game.update_input(input_data['player_id'], input_data['keypressed'])
+    if request.sid in connected_players:
+        game.update_input(input_data['player_id'], input_data['keypressed'])
     
 @socketio.on('client_connected')
 def handle_client_connect_event(data):

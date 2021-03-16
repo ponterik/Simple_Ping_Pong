@@ -38,8 +38,6 @@ function gameLoop(delta){
 
 
 
-PIXI.utils.sayHello(type)
-//Create a Pixi Application
 let app = new PIXI.Application({ 
     width: 800,         // default: 800
     height: 600,        // default: 600
