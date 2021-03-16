@@ -1,4 +1,10 @@
 # Simple_Ping_Pong
-To run install requirements.txt
+# Requierments
+python3
 
-run using python3 app.py
+packages:
+`python3 -m pip install flask`
+`python3 -m pip install flask_socketio`
+
+# Run in development
+Start in development by running `python3 app.py`.
