@@ -7,7 +7,7 @@ let type = "WebGL"
     }
 
 socket.on('connect',function(){
-    socket.emit('client_connected',{data:"testsend"});
+    socket.emit('client_connected',{data:""});
     start_game()
 });
 
@@ -34,6 +34,7 @@ function start_game() {
 }
 
 function gameLoop(delta){
+    //To render updates
   }
 
 
@@ -48,11 +49,14 @@ let app = new PIXI.Application({
 );
 document.body.appendChild(app.view);
 
-
+//Negative values to start them offscreen
 let player1 = create_player(-100, -300)
-let x = player1.x
+
 let player2 = create_player(-700, -300)
 let ball = create_ball(-400, -300)
+
+create_middle_line(800, 600, 10)
+
 
 function create_player(x, y) {
     let player = new PIXI.Graphics();
@@ -74,6 +78,17 @@ function create_ball(x, y) {
     ball.y = y;
     app.stage.addChild(ball);
     return ball
+}
+function create_middle_line(width, height, n) {
+    for(i= 0; i < n+1; i++) {
+        var circle = new PIXI.Graphics();
+        circle.beginFill(0xFFFFFF);
+        circle.drawCircle(0, 0, 5)
+        circle.endFill();
+        circle.x = width/2;
+        circle.y = height*i/n;
+        app.stage.addChild(circle);
+    } 
 }
 
 

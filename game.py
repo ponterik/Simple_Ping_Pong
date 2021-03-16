@@ -36,15 +36,16 @@ class Game():
         if not player.is_left_side:
             if self.ball.x + self.ball.r > self.x_max - player.width:
                 if player.y + player.height > self.ball.y > player.y:
+                    #Could add better bounce logic here
                     self.ball.dx = -self.ball.dx
                 else:
                     self.ball.x = self.x_max/2
                     self.ball.y = self.y_max/2
-
         
         if player.is_left_side:
             if self.ball.x - self.ball.r < 0 + player.width:
                 if player.y + player.height > self.ball.y > player.y:
+                    #Could add better bounce logic here
                     self.ball.dx = -self.ball.dx
                 else:
                     self.ball.x = self.x_max/2
