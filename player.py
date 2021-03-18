@@ -6,8 +6,12 @@ class Player:
     width = 10
     height = 100
     is_left_side = None
-    def __init__(self, id):
-        self.id = id
+    def __init__(self, player_id, x_max, y_max):
+        self.id = player_id
+        if player_id == 1:
+            self.set_position(0, y_max/2, True) 
+        else:
+            self.set_position(x_max-Player.width, y_max/2, False)  
 
     def update_position(self, x_max, y_max):
         if self.latest_input:

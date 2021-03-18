@@ -8,15 +8,15 @@ class Game():
     x_max = 800
     y_max = 600
     ball = Ball(x_max/2, y_max/2)
+    is_running = False
     def __init__(self):
         pass
 
     def add_player(self, player_id):
-        self.players[player_id] = Player(player_id)
+        self.players[player_id] = Player(player_id, self.x_max, self.y_max)
 
     def initialize_game(self):
-        self.players[1].set_position(0, self.y_max/2, True)        
-        self.players[2].set_position(self.x_max-Player.width, self.y_max/2, False)
+        self.is_running = True
 
     def game_step(self):
         for _, player in self.players.items():
@@ -36,7 +36,6 @@ class Game():
         if not player.is_left_side:
             if self.ball.x + self.ball.r > self.x_max - player.width:
                 if player.y + player.height > self.ball.y > player.y:
-                    #Could add better bounce logic here
                     self.ball.dx = -self.ball.dx
                 else:
                     self.ball.x = self.x_max/2
@@ -45,7 +44,6 @@ class Game():
         if player.is_left_side:
             if self.ball.x - self.ball.r < 0 + player.width:
                 if player.y + player.height > self.ball.y > player.y:
-                    #Could add better bounce logic here
                     self.ball.dx = -self.ball.dx
                 else:
                     self.ball.x = self.x_max/2
